@@ -32,6 +32,31 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+//Ruta hola mundo
+$routes->get('/hola/ruta',function(){
+	echo 'hola desde Routes.php';
+});
+
+$routes->get('/hola/controlador', 'Hola_controller::index');
+
+$routes->get('/hola/parametros/(:any)/(:num)', 'Hola_controller::parametrosAction/$1/$2');
+
+$routes->get('/hola/vista', 'Hola_controller::vistaAction');
+
+$routes->get('/hola/mis/datos', 'Hola_controller::holaMisDatosAction');
+
+$routes->get('/persona/datos/(:any)/(:num)','PersonaController::datosAction/$1/$2');
+
+$routes->get('/persona/empleado/(:any)/(:num)','PersonaController::sueldoAction/$1/$2');
+
+//Envio de Colecciones
+$routes->get('/persona/listar','PersonaController::listarAction');
+
+//practica 1
+$routes->get('/practica/misdatos', 'PracticaController::misdatosAction');
+$routes->get('/practica/tabla/multiplicar/(:num)', 'PracticaController::tablaMultiplicarAction/$1');
+$routes->get('/practica/matriz/(:num)', 'PracticaController::matrizAction/$1');
+$routes->get('/practica/productos', 'PracticaController::productosAction');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

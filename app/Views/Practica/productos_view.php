@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>LISTA DE PRODUCTOS</h1>
-    <TABLe border="1">
+    <table border="1">
         <thead>
             <tr>
                 <th>CODIGO</th>
@@ -28,6 +28,6 @@
                 </tr>
             <?php }?>
         </tbody>
-    </TABLe>
+    </table>
 </body>
 </html>

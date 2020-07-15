@@ -17,7 +17,8 @@ class Hola_controller extends BaseController
 
 	public function vistaAction()
 	{
-		return view('hola_view');
+		$data['title'] = 'Hola Vista';
+		return view('hola_view',$data);
 	}
 
 	public function holaMisDatosAction(){

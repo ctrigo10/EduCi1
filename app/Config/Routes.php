@@ -57,9 +57,18 @@ $routes->get('/practica/misdatos', 'PracticaController::misdatosAction');
 $routes->get('/practica/tabla/multiplicar/(:num)', 'PracticaController::tablaMultiplicarAction/$1');
 $routes->get('/practica/matriz/(:num)', 'PracticaController::matrizAction/$1');
 $routes->get('/practica/productos', 'PracticaController::productosAction');
-
+//
 $routes->get('/calculadora/(:num)/(:num)','CalculadoraController::aritemeticaAction/$1/$2');
 $routes->get('/geometria/(:num)/(:num)','CalculadoraController::geometriaAction/$1/$2');
+
+//User
+$routes->get('/users','UserController::index');
+
+//Curso
+$routes->get('/cursos','CursoController::index');
+
+//Estudiante
+$routes->get('/estudiantes','EstudianteController::index');
 /**
  * --------------------------------------------------------------------
  * Additional Routing

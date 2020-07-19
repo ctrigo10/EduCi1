@@ -62,13 +62,26 @@ $routes->get('/calculadora/(:num)/(:num)','CalculadoraController::aritemeticaAct
 $routes->get('/geometria/(:num)/(:num)','CalculadoraController::geometriaAction/$1/$2');
 
 //User
-$routes->get('/users','UserController::index');
+$routes->add('/user','UserController::index');
+$routes->add('/user/guardar','UserController::guardarAction');
+$routes->add('/user/actualizar','UserController::actualizarAction');
+$routes->add('/user/eliminar/(:num)','UserController::eliminarAction/$1');
+$routes->add('/user/listar/(:num)','UserController::listaAction/$1');
+$routes->add('/user/listar/sql','UserController::listaSqlAction');
+$routes->get('/user/new','UserController::newAction');
+$routes->post('/user/create','UserController::createAction');
 
 //Curso
-$routes->get('/cursos','CursoController::index');
+$routes->get('/curso','CursoController::index');
+$routes->get('/curso/new','CursoController::newAction');
+$routes->post('/curso/create','CursoController::createAction');
 
 //Estudiante
-$routes->get('/estudiantes','EstudianteController::index');
+$routes->get('/estudiante','EstudianteController::index');
+$routes->get('/estudiante/new','EstudianteController::newAction');
+$routes->post('/estudiante/create','EstudianteController::createAction');
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

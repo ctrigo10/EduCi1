@@ -11,7 +11,7 @@ class UserModel extends Model
     protected $returnType     = 'object';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['name', 'password', 'email'];
+    protected $allowedFields = ['username', 'password', 'email'];
 
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
@@ -21,4 +21,11 @@ class UserModel extends Model
     protected $validationRules    = [];
     protected $validationMessages = [];
     protected $skipValidation     = false;
+
+    public function ObtenerUsuarios(){
+        $db = \config\Database::connect();
+        $query = $db->query('select id,username,email from users;');
+        $result = $query->getResult();
+        return $result;
+    }
 }

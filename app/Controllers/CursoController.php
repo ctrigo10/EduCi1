@@ -42,4 +42,29 @@ class Cursocontroller extends BaseController
         ]);
         return $val;
     }
+
+    public function editAction($id){
+        $cursoModel = new CursoModel();
+        helper('form');
+        $curso = $cursoModel->find($id); 
+        $data['curso'] = $curso;
+        $data['title'] = 'Editar Curso';
+        return view('curso/editar_view', $data);
+    }
+
+    public function updateAction(){
+        if($this->cursoCreateFormValidation()){
+            $cursoModel = new CursoModel();
+            $request = \Config\Services::request();
+            $session = \Config\Services::session();
+            $curso = $request->getPostGet();
+            $id = $request->getPostGet('id');
+            $cursoModel->update($id, $curso);
+            $session->setFlashdata('message','El curso '.$curso['descripcion'].' fue editado correctamente');
+            return redirect()->to('/curso');
+        } else{ //mostrar mensajes de error
+            //var_dump(\Config\Services::validation()->getErrors());
+            return $this->editAction();
+        }
+    }
 }

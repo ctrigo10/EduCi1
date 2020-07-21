@@ -106,4 +106,39 @@ class Usercontroller extends BaseController
         ]);
         return $val;
     }
+
+    private function userEditFormValidation(){
+        $val = $this->validate([
+            'username' => 'required|min_length[3]',
+            'email' => 'required|valid_email|is_unique[users.email]',
+        ],[ //mensajes de validación
+
+        ]);
+        return $val;
+    }
+
+    public function editAction($id){
+        $userModel = new UserModel();
+        helper('form');
+        $user = $userModel->find($id);
+        $data['user'] = $user;
+        $data['title'] = 'Editar Usuario';
+        return view('user/editar_view', $data);
+    }
+
+    public function updateAction(){
+        if($this->userEditFormValidation()){
+            $userModel = new UserModel();
+            $request = \Config\Services::request();
+            $session = \Config\Services::session();
+            $user = $request->getPostGet();
+            $id = $request->getPostGet('id');
+            $userModel->update($id, $user);
+            $session->setFlashdata('message','El usuario '.$user['username'].' fue editado correctamente');
+            return redirect()->to('/user');
+        } else{ //mostrar mensajes de error
+            //var_dump(\Config\Services::validation()->getErrors());
+            return $this->editAction();
+        }
+    }
 }

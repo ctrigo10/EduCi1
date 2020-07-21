@@ -19,9 +19,11 @@
                 <table class="table table-hover table-bordered" id="sampleTable">    
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>ID</th>
                             <th>USER</th>
                             <th>EMAIL</th>
+                            <th>FECHA REGISTRO</th>
+                            <th>OPCIONES</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,6 +32,13 @@
                                 <td><?php echo $user->id; ?></td>
                                 <td><?php echo $user->username; ?></td>
                                 <td><?php echo $user->email; ?></td>
+                                <td><?php echo $user->created_at; ?></td>
+                                <td>
+                                    <a href="<?php echo base_url('user/edit/'.$user->id);?>" 
+                                        title="editar" class="btn btn-success btn-sm">
+                                        <span class="fa fa-pencil"></span>
+                                    </a>
+                                </td>
                             </tr>
                         <?php }?>
                     </tbody>

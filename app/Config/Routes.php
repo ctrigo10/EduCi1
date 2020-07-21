@@ -71,15 +71,26 @@ $routes->add('/user/listar/sql','UserController::listaSqlAction');
 $routes->get('/user/new','UserController::newAction');
 $routes->post('/user/create','UserController::createAction');
 
+$routes->get('/user/edit/(:num)','UserController::editAction/$1');
+$routes->post('/user/update','UserController::updateAction');
+
 //Curso
 $routes->get('/curso','CursoController::index');
 $routes->get('/curso/new','CursoController::newAction');
 $routes->post('/curso/create','CursoController::createAction');
+$routes->get('/curso/edit/(:num)','CursoController::editAction/$1');
+$routes->post('/curso/update','CursoController::updateAction');
 
 //Estudiante
 $routes->get('/estudiante','EstudianteController::index');
 $routes->get('/estudiante/new','EstudianteController::newAction');
 $routes->post('/estudiante/create','EstudianteController::createAction');
+
+//Helpers
+$routes->get('/calculadora/aritmetica/(:num)/(:num)','CalculadoraController::aritemeticaAction/$1/$2');
+$routes->get('/calculadora/rectangulo/(:num)/(:num)','CalculadoraController::rectanguloAction/$1/$2');
+$routes->get('/calculadora/circulo/(:num)','CalculadoraController::circuloAction/$1');
+
 
 
 /**

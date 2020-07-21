@@ -8,15 +8,6 @@ class CalculadoraController extends BaseController
 	{
 		return view('welcome_message');
     }
-    
-    public function aritemeticaAction($v1,$v2){
-        helper('calculadora_helper');
-
-        $data['va'] = $v1;
-        $data['vb'] = $v2;
-
-        return view('Calculadora/helper_view', $data);
-    }
 
     public function geometriaAction($b,$a){
         $rectangulo = new Rectangulo();
@@ -29,6 +20,32 @@ class CalculadoraController extends BaseController
         $data['perimetro'] = $rectangulo->getPerimetro();
 
         return view('Calculadora/libreria_view', $data);
+    }
+
+    public function aritemeticaAction($v1,$v2){
+        helper('calculadora_helper');
+
+        $data['va'] = $v1;
+        $data['vb'] = $v2;
+
+        return view('Calculadora/calculadora_view', $data);
+    }
+
+    public function rectanguloAction($v1,$v2){
+        helper('calculadora_helper');
+
+        $data['va'] = $v1;
+        $data['vb'] = $v2;
+
+        return view('Calculadora/rectangulo_view', $data);
+    }
+
+    public function circuloAction($v1){
+        helper('calculadora_helper');
+
+        $data['va'] = $v1;
+
+        return view('Calculadora/circulo_view', $data);
     }
 	//--------------------------------------------------------------------
 

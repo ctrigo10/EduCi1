@@ -9,7 +9,7 @@
     <h1>Calculadora aritmetica helper</h1>
     <p>valora A: <?php echo $va ?></p>
     <p>valora B: <?php echo $vb ?></p>
-
+    <br>
     <p>Suma : <?php echo sumar($va,$vb) ?></p>
     <p>Resta : <?php echo restar($va,$vb) ?></p>
     <p>Multiplicación : <?php echo multiplicar($va,$vb) ?></p>

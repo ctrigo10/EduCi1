@@ -28,4 +28,15 @@ class UserModel extends Model
         $result = $query->getResult();
         return $result;
     }
+
+    public function buscarUsuario($username, $password){
+        $db = \config\Database::connect();
+        $builder = $db->table($this->table);
+        $builder->select('id, username , password');
+        $builder->where('username',$username);
+        $builder->where('password',MD5($password));
+        $builder->limit(1);
+        $query = $builder->get();
+        return $query->getRow();
+    }
 }

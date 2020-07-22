@@ -34,11 +34,15 @@
                                     <td><?php echo $curso->precio; ?></td>
                                     <td><?php echo $curso->created_at; ?></td>
                                     <td>
-                                    <a href="<?php echo base_url('curso/edit/'.$curso->id);?>" 
-                                            title="editar" class="btn btn-success btn-sm">
+                                        <a href="<?php echo base_url('curso/edit/'.$curso->id);?>" 
+                                            title="Editar" class="btn btn-success btn-sm">
                                             <span class="fa fa-pencil"></span>
                                         </a>
-                                </td>
+                                        <a href="<?php echo base_url('curso/delete/'.$curso->id);?>" 
+                                            title="Eliminar" class="btn btn-danger btn-sm">
+                                            <span class="fa fa-trash"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php }?>
                         </tbody>

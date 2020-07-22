@@ -67,4 +67,17 @@ class Cursocontroller extends BaseController
             return $this->editAction();
         }
     }
+
+    public function deleteAction($id){
+        $cursoModel = new CursoModel();
+        $curso = $cursoModel->find($id);
+        if($curso){
+            $cursoModel->delete($id);
+            $session = \Config\Services::session();
+            $session->setFlashdata('message','El curso '.$curso->descripcion.' fue eliminado correctamente');
+            return redirect()->to('/curso');
+        }else{
+            echo 'No existe registro de eliminar';
+        }
+    }
 }

@@ -16,7 +16,8 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+//$routes->setDefaultController('Home');
+$routes->setDefaultController('LoginController');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -30,14 +31,18 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+//$routes->get('/', 'Home::index');
+$routes->get('/', 'LoginController::index');
+//LOGIN
+$routes->post('/login', 'LoginController::login');
+$routes->get('/logout', 'LoginController::logout');
 
 //Ruta hola mundo
 $routes->get('/hola/ruta',function(){
 	echo 'hola desde Routes.php';
 });
 
-$routes->get('/hola/controlador', 'Hola_controller::index');
+$routes->add('/hola/controlador', 'Hola_controller::index');
 
 $routes->get('/hola/parametros/(:any)/(:num)', 'Hola_controller::parametrosAction/$1/$2');
 
@@ -73,6 +78,7 @@ $routes->post('/user/create','UserController::createAction');
 
 $routes->get('/user/edit/(:num)','UserController::editAction/$1');
 $routes->post('/user/update','UserController::updateAction');
+$routes->get('/user/delete/(:num)','UserController::deleteAction/$1');
 
 //Curso
 $routes->get('/curso','CursoController::index');
@@ -80,6 +86,7 @@ $routes->get('/curso/new','CursoController::newAction');
 $routes->post('/curso/create','CursoController::createAction');
 $routes->get('/curso/edit/(:num)','CursoController::editAction/$1');
 $routes->post('/curso/update','CursoController::updateAction');
+$routes->get('/curso/delete/(:num)','CursoController::deleteAction/$1');
 
 //Estudiante
 $routes->get('/estudiante','EstudianteController::index');
